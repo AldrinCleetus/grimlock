@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./navbar";
+import CharacterBuild from "./CharacterBuild";
+import Testing from "./Testing";
+import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = ()=>{
+
+    return(
+        <Router>
+        <section className="hero is-fullheight">
+            <div className="columns m-0 p-0">
+                <Navbar></Navbar>
+                <Routes>
+                    <Route exact path="/" element={<CharacterBuild/>} />
+
+                    <Route exact path="/test" element={<Testing/>} />
+                </Routes>
+            </div>  
+        </section>
+        </Router>
+    )
 }
 
 export default App;

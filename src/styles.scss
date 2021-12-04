@@ -1,0 +1,40 @@
+@charset "utf-8"; 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+ 
+
+$genshin-beige: #C2AC7B;
+$primay-dark-blue: #262626;
+
+
+
+$primary: $primay-dark-blue;
+$link: $genshin-beige;
+$info: $genshin-beige;
+
+
+$menu-list-color :$genshin-beige;
+
+$family-sans-serif: 'Varela Round', sans-serif;
+
+.is-text-overflow {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+$orange: #e28d31;
+$orange-invert: findColorInvert($orange);
+
+$gold: #fff134;
+$gold-invert: findColorInvert($gold);
+
+$custom-colors: ("orange": ($orange, $orange-invert),
+                "gold":($gold,$gold-invert)                 
+);
+
+
+@import "~bulma/bulma.sass";
