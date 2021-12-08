@@ -26,13 +26,13 @@ $family-sans-serif: 'Varela Round', sans-serif;
 }
 
 
-$orange: #e28d31;
-$orange-invert: findColorInvert($orange);
+$purple: #9273BD;
+$purple-invert: findColorInvert($purple);
 
-$gold: #fff134;
+$gold: #DB9152;
 $gold-invert: findColorInvert($gold);
 
-$custom-colors: ("orange": ($orange, $orange-invert),
+$custom-colors: ("purple": ($purple, $purple-invert),
                 "gold":($gold,$gold-invert)                 
 );
 
