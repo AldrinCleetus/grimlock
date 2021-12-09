@@ -10,6 +10,11 @@ html,body{
   height: 100vh;
 }
 
+.heightfull{
+  height: 100%;
+  width: 100%;
+}
+
 .text-color{
   color: white !important;
 }
@@ -49,7 +54,7 @@ html,body{
 
 
 .character-splash{
-  max-height: 300px;
+  max-height: 500px;
 }
 
 .character-splash-img{

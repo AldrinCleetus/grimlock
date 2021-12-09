@@ -14,15 +14,53 @@ const CharacterBuild = ()=>{
 
                         
 
-                        <div className="columns p-2">
+                        <div className="columns p-2 ">
 
-                            <div className="character-splash p-1">
+                            <div className="character-splash p-1 column is-5">
                                 <img className="character-splash-img" src="https://api.genshin.dev/characters/bennett/gacha-splash" alt="error" />
                             </div>
 
+                            <div className="column is-2 ">
+                                        <h6 className="is-size-4">Weapons</h6>
+                                        <div class="card charactericon has-text-black characterSelector has-background-grey my-3 mx-auto is-size-2">
+                                            <div class="card-image">
+                                                <figure class="image">
+                                                <img src="images/48.png" alt="test" />
+                                                </figure>
+                                            </div>
+                                            <div class=" is-text-overflow has-background-link rounded-corner">
+                                                <p className="is-size-7">Select</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card charactericon has-text-black characterSelector has-background-grey my-3 mx-auto is-size-2">
+                                            <div class="card-image">
+                                                <figure class="image">
+                                                <img src="images/48.png" alt="test" />
+                                                </figure>
+                                            </div>
+                                            <div class=" is-text-overflow has-background-link rounded-corner">
+                                                <p className="is-size-7">Select</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card charactericon has-text-black characterSelector has-background-grey my-3 mx-auto is-size-2">
+                                            <div class="card-image">
+                                                <figure class="image">
+                                                <img src="images/48.png" alt="test" />
+                                                </figure>
+                                            </div>
+                                            <div class=" is-text-overflow has-background-link rounded-corner">
+                                                <p className="is-size-7">Select</p>
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+                                
+
 
                         </div>
-
 
 
                     </div>
