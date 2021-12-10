@@ -26,8 +26,8 @@ html,body{
 
 .charactericon{
   width: 2em;
-  min-height: 100px;
 }
+
 
 .characterSelector:hover{
   cursor: pointer;
@@ -76,6 +76,11 @@ html,body{
   height: 10px;
   background-color: #C2AC7B;
   border-radius: 0.1em;
+}
+
+.test-height{
+  height: 200px;
+  flex-flow: row-reverse wrap;
 }
 
 
