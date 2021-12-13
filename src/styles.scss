@@ -25,6 +25,13 @@ $family-sans-serif: 'Varela Round', sans-serif;
     white-space: nowrap;
 }
 
+.testtext {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 
 $purple: #9273BD;
 $purple-invert: findColorInvert($purple);
