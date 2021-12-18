@@ -25,7 +25,13 @@ html,body{
 }
 
 .charactericon{
-  width: 2em;
+  flex-direction: column;
+  /* width: 100px; */
+  /* height: 100%; */
+}
+
+.charactericon p{
+  align-self:flex-end;
 }
 
 
@@ -53,9 +59,15 @@ html,body{
   border-radius: 0.3em;
 }
 
+.weapons{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 
 .character-splash{
-  max-height: 500px;
+  height: 100%;
 }
 
 .character-splash-img{

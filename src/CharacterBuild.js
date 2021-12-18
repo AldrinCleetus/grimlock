@@ -1,4 +1,21 @@
+import Itemframe from './components/Itemframe'
+
 const CharacterBuild = ()=>{
+
+    const test  = {
+        frameImage: "images/72.png", 
+        frameTitle : "select"
+    }
+
+    const artifactType  = {
+        frameImage: "images/timepiece.png", 
+        frameTitle : "select"
+    }
+
+    const artifact  = {
+        frameImage: "images/artifact.png", 
+        frameTitle : "select"
+    }
 
     return(
         <div className="column max-height has-background-primary has-text-info">
@@ -23,147 +40,70 @@ const CharacterBuild = ()=>{
 
                         <div className="columns p-2">
 
-                            <div className="character-splash p-1 column is-5">
+                            <div className="character-splash column is-5">
                                 <img className="character-splash-img" src="https://api.genshin.dev/characters/bennett/gacha-splash" alt="error" />
-                            </div>
 
-                            <div className="column is-2 ">
-                                        <h6 className="is-size-4">Weapons</h6>
-                                        <div class="card charactericon has-text-black characterSelector has-background-grey my-5 mx-auto is-size-2">
-                                            <div class="card-image">
-                                                <figure class="image">
-                                                    <img src="images/weapon.png" alt="test" />
-                                                </figure>
-                                            </div>
-                                            <div class=" is-text-overflow has-background-link rounded-corner">
-                                                <p className="is-size-7">Select</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="card charactericon has-text-black characterSelector has-background-grey my-5 mx-auto is-size-2">
-                                            <div class="card-image">
-                                                <figure class="image">
-                                                <img src="images/weapon.png" alt="test" />
-                                                </figure>
-                                            </div>
-                                            <div class=" is-text-overflow has-background-link rounded-corner">
-                                                <p className="is-size-7">Select</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="card charactericon has-text-black characterSelector has-background-grey my-5 mx-auto is-size-2">
-                                            <div class="card-image">
-                                                <figure class="image">
-                                                    <img src="images/weapon.png" alt="test" />
-                                                </figure>
-                                            </div>
-                                            <div class=" is-text-overflow has-background-link rounded-corner">
-                                                <p className="is-size-7">Select</p>
-                                            </div>
-                                        </div>
-
-                                        
-
-                                        
-
+                                <h6 className="is-size-4">Team Synergy</h6>
+                                <div className="columns is-centered my-auto">
+                                    <div className="column is-2 mx-auto p-0">
+                                        <Itemframe {...test}></Itemframe>
+                                    </div>  
+                                    <div className="column is-2 mx-auto p-0">
+                                        <Itemframe  {...test}></Itemframe>
+                                    </div>  
+                                    <div className="column is-2 mx-auto p-0">
+                                        <Itemframe  {...test}></Itemframe>
+                                    </div>  
+                                    <div className="column is-2 mx-auto p-0">
+                                        <Itemframe  {...test}></Itemframe>
+                                    </div>  
+                                </div>
                                         
                             </div>
-                            
 
-                            <div className="column px-0 ">
+                            <div className="column px-0">
                                 <div className="bar">
 
                                 </div>
                             </div>
 
 
-                            <div className="column is-5">
+                            <div className="column is-7">
                                 <h6 className="is-size-4 ">Artifact Stat</h6>
                                 
                                 <div className="columns is-centered">
-                                        <div className="column">
-                                            <div class="card charactericon has-text-black characterSelector has-background-grey my-2 mx-auto is-size-2">
-                                                <div class="card-image">
-                                                    <figure class="image">
-                                                    <img src="images/goblet.png" alt="test" />
-                                                    </figure>
-                                                </div>
-                                                <div class=" is-text-overflow has-background-link rounded-corner">
-                                                    <p className="is-size-7">Select</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="column">
-                                            <div class="card charactericon has-text-black characterSelector has-background-grey my-2 mx-auto is-size-2">
-                                                <div class="card-image">
-                                                    <figure class="image">
-                                                    <img src="images/timepiece.png" alt="test" />
-                                                    </figure>
-                                                </div>
-                                                <div class=" is-text-overflow has-background-link rounded-corner">
-                                                    <p className="is-size-7">Select</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="column">
-                                            <div class="card charactericon has-text-black characterSelector has-background-grey my-2  mx-auto is-size-2">
-                                                    <div class="card-image">
-                                                        <figure class="image">
-                                                        <img src="images/circlet.png" alt="test" />
-                                                        </figure>
-                                                    </div>
-                                                    <div class=" is-text-overflow has-background-link rounded-corner">
-                                                        <p className="is-size-7">Select</p>
-                                                    </div>
-                                                </div>
-                                        </div>
+                                    <div className="column is-2 mx-auto">
+                                        <Itemframe {...artifactType}></Itemframe>
+                                    </div>
+                                    <div className="column is-2 mx-auto">
+                                        <Itemframe {...artifactType}></Itemframe>
+                                    </div>
+                                    <div className="column is-2 mx-auto">
+                                        <Itemframe {...artifactType}></Itemframe>
+                                    </div>
+                                        
 
                                 </div>
                                 
                                 <h6 className="is-size-4 ">Artifact Type</h6>
                                 <div className="columns is-centered">
                                    
-                                        <div className="column">
-                                            <div class="card charactericon has-text-black characterSelector has-background-grey my-2 mx-auto is-size-2">
-                                                <div class="card-image">
-                                                    <figure class="image">
-                                                    <img src="images/artifact.png" alt="test" />
-                                                    </figure>
-                                                </div>
-                                                <div class=" is-text-overflow has-background-link rounded-corner">
-                                                    <p className="is-size-7">Select</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="column">
-                                            <div class="card charactericon has-text-black characterSelector has-background-grey my-2 mx-auto is-size-2">
-                                                <div class="card-image">
-                                                    <figure class="image">
-                                                    <img src="images/artifact.png" alt="test" />
-                                                    </figure>
-                                                </div>
-                                                <div class=" is-text-overflow has-background-link rounded-corner">
-                                                    <p className="is-size-7">Select</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="column">
-                                            <div class="card charactericon has-text-black characterSelector has-background-grey my-2  mx-auto is-size-2">
-                                                    <div class="card-image">
-                                                        <figure class="image">
-                                                        <img src="images/artifact.png" alt="test" />
-                                                        </figure>
-                                                    </div>
-                                                    <div class=" is-text-overflow has-background-link rounded-corner">
-                                                        <p className="is-size-7">Select</p>
-                                                    </div>
-                                                </div>
-                                        </div>
+                                    <div className="column is-2 mx-auto">
+                                        <Itemframe {...artifact}></Itemframe>
+                                    </div>
+                                    <div className="column is-2 mx-auto">
+                                        <Itemframe {...artifact}></Itemframe>
+                                    </div>
+                                    <div className="column is-2 mx-auto">
+                                        <Itemframe {...artifact}></Itemframe>
+                                    </div>
 
 
                                         
 
                                 </div>
+
+                                
                                 
 
                                 <div className="columns">
@@ -172,10 +112,7 @@ const CharacterBuild = ()=>{
                                             2 piece: Elemental Burst DMG +20% placeholder
                                         </p>
                                         <p className="is-size-4 has-text-left">
-                                            4 piece: When the character equipping this artifact set heals a character in the party, a Sea-Dyed Foam will appear for 3 seconds, accumulating the amount of HP recovered from healing (including overflow healing). At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing.
-(This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but it is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses).
-Only one Sea-Dyed Foam can be produced every 3.5 seconds. Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing). There can be no more than one Sea-Dyed Foam active at any given time.
-This effect can still be triggered even when the character who is using this artifact set is not on the field.
+                                            4 piece: something something something
                                         </p>
                                     </div>
                                 </div>

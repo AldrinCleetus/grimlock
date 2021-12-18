@@ -1,4 +1,13 @@
+import Itemframe from './components/Itemframe'
+
 const Testing = () => {
+    
+    const test  = {
+        frameImage: "https://api.genshin.dev/characters/bennett/icon", 
+        frameTitle : "bennet"
+    }
+
+    
     return(
         <div className="column max-height has-background-primary has-text-info">
             <div className=" is-fullwidth has-text-centered is-size-1">
@@ -7,11 +16,16 @@ const Testing = () => {
                     </div>
 
                     <div className="columns mt-3 is-centered">
+
+                        <div className="column is-1">
+                            <Itemframe {...test}></Itemframe>
+                        </div>
+
                         <div className="column is-1">
                             <div class="card charactericon has-text-black characterSelector has-background-purple">
                                 <div class="card-image">
                                     <figure class="image">
-                                    <img src="https://api.genshin.dev/characters/bennett/icon" alt="test" />
+                                        <img src="https://api.genshin.dev/characters/bennett/icon" alt="test" />
                                     </figure>
                                 </div>
                                 <div class=" is-text-overflow has-background-link rounded-corner">
