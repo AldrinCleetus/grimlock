@@ -29,7 +29,7 @@ const CharacterBuild = ()=>{
 
                     <div className="character-build container p-2">
                         <div className="p-1 is-size-3">
-                        <input class=" build-name has-text-info p-2 is-size-2" type="text" placeholder="Enter Build Name: "/>
+                        <input className=" build-name has-text-info p-2 is-size-2" type="text" placeholder="Enter Build Name: "/>
                         </div>
 
                         <div className="horizontal-bar"></div>

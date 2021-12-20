@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react';
 
 
-const Itemframe = ({frameImage,frameTitle}) => {
+const Itemframe = ({frameImage,name,rarity}) => {
 
-    const isRarity = 0
+    const [isRarity] = useState(rarity)
     const [backgroundColor,setBackgroundColor] =  useState("grey") 
 
     useEffect(() =>{
@@ -19,7 +19,7 @@ const Itemframe = ({frameImage,frameTitle}) => {
                 setBackgroundColor("grey")
         }
         
-    },[])
+    },[isRarity])
     
 
     return ( 
@@ -30,7 +30,7 @@ const Itemframe = ({frameImage,frameTitle}) => {
                                     </figure>
                                 </div>
                                 <div className=" is-text-overflow has-background-link rounded-corner">
-                                    <p className="is-size-6">{frameTitle}</p>
+                                    <p className="is-size-6">{name}</p>
                                 </div>
                             </div>
      );

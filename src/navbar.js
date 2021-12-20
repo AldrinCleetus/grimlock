@@ -12,7 +12,7 @@ const Navbar = ()=>{
                     </a>
                 </div>
 
-                <ul class="section p-2 is-size-4">
+                <ul className="section p-2 is-size-4">
                     <li className="py-4 ">
                         <Link to="/">Character Build</Link>
                     </li>
