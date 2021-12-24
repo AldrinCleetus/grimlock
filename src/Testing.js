@@ -9,119 +9,105 @@ const Testing = () => {
         name : "bennet"
     }
 
-    // console.log("reseting")
-    // const [allCharacters,setallCharacters] = useState([]);
-
-    // const temp = []
-
-    // const { data } = useFetch('https://api.genshin.dev/characters')
-
-    
-
-    //const [characterData, setcharacterData] = useState(null);
-
-    // useEffect(()=>{
-
-
-    //     if (data === null) return
-
-
-    //     console.log("Fetching ", data.length, " Items")
-
-    //     for (let index = 0; index < data.length; index++) {
-
-
-    //         console.log("fecting ", `https://api.genshin.dev/characters/${data[index]}`)
-
-    //         fetch(`https://api.genshin.dev/characters/${data[index]}`)
-    //             .then(res =>{
-    //                 if(!res.ok){ 
-    //                     throw Error("Couldnt Fetch")
-    //                 }
-    //                 return res.json()
-    //                     .then( info =>{
-                        
-    //                     info.uniqueKey = index
-    //                     info.frameImage = `https://api.genshin.dev/characters/${data[index]}/icon`
-                        
-
-    //                     //setallCharacters([...allCharacters,info])
-
-
-    //                     temp.push(info)
-    //                 }).catch(err => {
-    //                     return
-    //                 })
-    //         })}
-
-            
-        
-
-    //     setallCharacters(temp)
-        
-    //     console.log(temp)
-            
-        
-    // },[data])
-
-  
-    
 
     const [characterData, setcharacterData] = useState([]);
     const [characters, setcharacters] = useState([]);
 
-   
+    console.log("initial value")
+    console.log(characterData)
 
 
-    useEffect(()=>{
-        console.log("Fetching all the characters")
-        fetch("https://api.genshin.dev/characters")
-            .then(res =>{
-                if (!res.ok){
-                    throw Error("Crap something went wrong")
-                }
-    
-                return res.json()
-                    .then(info =>{
-                        setcharacters(info)
-                    })
-            })
+    const characterArray = [
+        "albedo",
+        "aloy",
+        "amber",
+        "arataki-itto",
+        "ayaka",
+        "barbara",
+        "beidou",
+        "bennett",
+        "chongyun",
+        "diluc",
+        "diona",
+        "eula",
+        "fischl",
+        "ganyu",
+        "hu-tao",
+        "jean",
+        "kaeya",
+        "kazuha",
+        "keqing",
+        "klee",
+        "kokomi",
+        "lisa",
+        "mona",
+        "ningguang",
+        "noelle",
+        "qiqi",
+        "raiden",
+        "razor",
+        "rosaria",
+        "sara",
+        "sayu",
+        "sucrose",
+        "tartaglia",
+        "thoma",
+        "traveler-anemo",
+        "traveler-electro",
+        "traveler-geo",
+        "venti",
+        "xiangling",
+        "xiao",
+        "xingqiu",
+        "xinyan",
+        "yanfei",
+        "yoimiya",
+        "zhongli"
+      ]
 
 
-        console.log("Fetching their details")
-        console.log(characters)
+    const getAllCharacters = async ()=> {
 
-        characters.map(character =>{
-            //console.log("Fetching: ",character)
+        if (characterArray.length === 0) {
+            console.log("No characters!")
+            return
+        }
+
+
+        let tempData = []
+        console.log("Fetching!")
+
+        for (let index = 0; index < characterArray.length; index++) {
+            const response = await fetch(`https://api.genshin.dev/characters/${characterArray[index]}`)
+            const data = await response.json()
+            //setcharacterData([...characterData,data])
+            // setcharacterData( hmmm =>{
+            //     return [...hmmm,data]
+            // })
+            data.frameImage = `https://api.genshin.dev/characters/${characterArray[index]}/icon`
+            data.uniqueKey = index + 2
+            tempData.push(data)
             
-            fetch(`https://api.genshin.dev/characters/${character}`)
-                .then(res =>{
-                    if(!res.ok){
-                        throw Error("Couldnt fetch data")
-                    }
+        }
 
-                    //BUGSSSSSSSSSSSSSSSSSSSS 
-                    return res.json()
-                        .then( info =>{
-                            setcharacterData([...characterData,info])
-                            console.log(characterData)
-                        })
-                })
+        console.log(tempData)
 
-        })
-
-        console.log("Finished Fetching data")
-        console.log(characterData)
-
-
-
-
+        setcharacterData(tempData)
         
-    },[])
+    }
 
 
+
+
+
+    useEffect(() => {
+        getAllCharacters()
+    }, []);
+
+
+    console.log(characterData)
+   
     
-
     
     return(
         <div className="column max-height has-background-primary has-text-info">
@@ -145,13 +131,13 @@ const Testing = () => {
                             ))
                         } */}
 
-                        {/* {
-                            allCharacters.map( character =>(
+                        {
+                            characterData.map( character =>(
                                 <div className="column is-1" key={character.uniqueKey}>
                                     <Itemframe {...character}></Itemframe>
                                 </div>
                             ))
-                        } */}
+                        }
 
 
                        
