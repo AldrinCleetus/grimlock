@@ -11,59 +11,67 @@ const Testing = () => {
 
 
     const [characterData, setcharacterData] = useState([]);
-    const [characters, setcharacters] = useState([]);
+    const [characterArray, setcharacterArray] = useState([]);
 
     console.log("initial value")
     console.log(characterData)
 
 
-    const characterArray = [
-        "albedo",
-        "aloy",
-        "amber",
-        "arataki-itto",
-        "ayaka",
-        "barbara",
-        "beidou",
-        "bennett",
-        "chongyun",
-        "diluc",
-        "diona",
-        "eula",
-        "fischl",
-        "ganyu",
-        "hu-tao",
-        "jean",
-        "kaeya",
-        "kazuha",
-        "keqing",
-        "klee",
-        "kokomi",
-        "lisa",
-        "mona",
-        "ningguang",
-        "noelle",
-        "qiqi",
-        "raiden",
-        "razor",
-        "rosaria",
-        "sara",
-        "sayu",
-        "sucrose",
-        "tartaglia",
-        "thoma",
-        "traveler-anemo",
-        "traveler-electro",
-        "traveler-geo",
-        "venti",
-        "xiangling",
-        "xiao",
-        "xingqiu",
-        "xinyan",
-        "yanfei",
-        "yoimiya",
-        "zhongli"
-      ]
+    // const characterArray = [
+    //     "albedo",
+    //     "aloy",
+    //     "amber",
+    //     "arataki-itto",
+    //     "ayaka",
+    //     "barbara",
+    //     "beidou",
+    //     "bennett",
+    //     "chongyun",
+    //     "diluc",
+    //     "diona",
+    //     "eula",
+    //     "fischl",
+    //     "ganyu",
+    //     "hu-tao",
+    //     "jean",
+    //     "kaeya",
+    //     "kazuha",
+    //     "keqing",
+    //     "klee",
+    //     "kokomi",
+    //     "lisa",
+    //     "mona",
+    //     "ningguang",
+    //     "noelle",
+    //     "qiqi",
+    //     "raiden",
+    //     "razor",
+    //     "rosaria",
+    //     "sara",
+    //     "sayu",
+    //     "sucrose",
+    //     "tartaglia",
+    //     "thoma",
+    //     "traveler-anemo",
+    //     "traveler-electro",
+    //     "traveler-geo",
+    //     "venti",
+    //     "xiangling",
+    //     "xiao",
+    //     "xingqiu",
+    //     "xinyan",
+    //     "yanfei",
+    //     "yoimiya",
+    //     "zhongli"
+    //   ]
+
+
+    const getCharacterArray = async ()=>{
+        const response = await fetch(`https://api.genshin.dev/characters`)
+        const data = await response.json()
+
+        setcharacterArray(data)
+    }
 
 
     const getAllCharacters = async ()=> {
@@ -98,11 +106,13 @@ const Testing = () => {
 
 
 
-
+    useEffect(() => {
+        getCharacterArray()
+    }, []);
 
     useEffect(() => {
         getAllCharacters()
-    }, []);
+    }, [characterArray]);
 
 
     console.log(characterData)
