@@ -7,7 +7,7 @@ const GetCharacters = () => {
     const [characterData, setcharacterData] = useState([]);
     const [characterArray, setcharacterArray] = useState([]);
 
-    const [Loading,setLoading] = useState(true)
+    const [Loading,setLoading] = useState(false)
 
 
     const getCharacterArray = async ()=>{
@@ -16,6 +16,7 @@ const GetCharacters = () => {
 
        
         setcharacterArray(data)
+        
     }
 
 
@@ -32,6 +33,7 @@ const GetCharacters = () => {
 
         let tempData = []
         console.log("Fetching!")
+        setLoading(true)
 
         for (let index = 0; index < characterArray.length; index++) {
             const response = await fetch(`https://api.genshin.dev/characters/${characterArray[index]}`)
@@ -44,6 +46,8 @@ const GetCharacters = () => {
 
         setLoading(false)
         setcharacterData(tempData)
+
+        sessionStorage.setItem("characterData", JSON.stringify(tempData));
         
     }
 
@@ -54,7 +58,14 @@ const GetCharacters = () => {
     }, []);
 
     useEffect(() => {
-        getAllCharacters()
+
+        if(sessionStorage.getItem("characterData") === null)
+        {
+            getAllCharacters()
+        }else{
+            setcharacterData(JSON.parse(sessionStorage.getItem("characterData")))
+        }
+
         console.log("rendering")
     }, [characterArray]);
 
