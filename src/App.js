@@ -1,6 +1,7 @@
 import Navbar from "./navbar";
 import CharacterBuild from "./CharacterBuild";
 import Testing from "./Testing";
+import ArtifactTest from "./ArtifactsTest";
 import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 
 
@@ -15,6 +16,8 @@ const App = ()=>{
                     <Route exact path="/" element={<CharacterBuild/>} />
 
                     <Route exact path="/test" element={<Testing/>} />
+
+                    <Route exact path="/artifacts" element={<ArtifactTest/>} />
                 </Routes>
             </div>  
         </section>
