@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import GetCharacters from './api/GetCharacters'
+import CharacterModal from './components/CharacterModal';
 
 
 const Testing = () => {
@@ -22,15 +22,9 @@ const Testing = () => {
                         Hello
                     </div>
 
-                    <div className={'has-background-black modal' + (characterSelecter ? 'is-active': '')} >
-                        <div className="modal-background"></div>
-                        <div className="modal-content">
-                            <div className="columns m-3 is-centered is-multiline " >
-                                <GetCharacters></GetCharacters>
-                            </div>
-                        </div>
-                        <button className="modal-close is-large" aria-label="close" onClick={characterSelecterClicked}></button>
-                    </div>
+                    <CharacterModal toggle={characterSelecter} close={characterSelecterClicked}></CharacterModal>
+
+                    
 
             </div>
         </div>

@@ -6,6 +6,13 @@ const Itemframe = ({frameImage,name,rarity}) => {
     const [isRarity] = useState(rarity)
     const [backgroundColor,setBackgroundColor] =  useState("grey") 
 
+    const [isSelected,setIsSelected] = useState(false)
+
+    const userSelected = ()=>{
+        console.log(name)
+        setIsSelected(true)
+    }
+
     useEffect(() =>{
         
         switch (isRarity) {
@@ -23,7 +30,7 @@ const Itemframe = ({frameImage,name,rarity}) => {
     
 
     return ( 
-        <div className={`card charactericon has-text-black characterSelector has-background-${backgroundColor} is-text-overflow`}>
+        <div className={`card charactericon has-text-black characterSelector has-background-${backgroundColor} is-text-overflow`} onClick={userSelected}>
                                 <div className="card-image is-1">
                                     <figure className="image ">
                                         <img src={frameImage} alt="404" />
