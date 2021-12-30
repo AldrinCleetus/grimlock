@@ -9,9 +9,12 @@ const GetArtifacts = () => {
 
     const [Loading,setLoading] = useState(false)
 
+    let controller = new AbortController();
 
     const getArtifactArray = async ()=>{
-        const response = await fetch(`https://api.genshin.dev/artifacts`)
+        const response = await fetch(`https://api.genshin.dev/artifacts`,{
+            signal: controller.signal
+          })
         const data = await response.json()
 
        
@@ -36,14 +39,18 @@ const GetArtifacts = () => {
         setLoading(true)
 
         for (let index = 0; index < artifacts.length; index++) {
-            const response = await fetch(`https://api.genshin.dev/artifacts/${artifacts[index]}`)
+            const response = await fetch(`https://api.genshin.dev/artifacts/${artifacts[index]}`,{
+                signal: controller.signal
+              })
             
             if (response.status >= 200 && response.status <= 299) {
                 console.log("seems good")
                 const data = await response.json()
 
                 //Checking if icon exists for the artifacts if not skip em...
-                const ImageExists = await fetch(`https://api.genshin.dev/artifacts/${artifacts[index]}/flower-of-life`)
+                const ImageExists = await fetch(`https://api.genshin.dev/artifacts/${artifacts[index]}/flower-of-life`,{
+                    signal: controller.signal
+                  })
 
                 if(ImageExists.status === 404){
                     console.log("Image doesnt exist")
@@ -75,19 +82,33 @@ const GetArtifacts = () => {
 
 
     useEffect(() => {
-        getArtifactArray()
+        getArtifactArray().catch(err =>{
+            console.log(err)
+        })
+
+        return ()=>{
+            //cleanup
+            controller.abort()
+        }
     }, []);
 
     useEffect(() => {
 
         if(sessionStorage.getItem("artifactDetails") === null)
         {
-            getArtifactDetails()
+            getArtifactDetails().catch(err =>{
+                console.log(err)
+            })
         }else{
             setArtifactDetails(JSON.parse(sessionStorage.getItem("artifactDetails")))
         }
 
         console.log("rendering")
+
+        return ()=>{
+            //cleanup
+            controller.abort()
+        }
     }, [artifacts]);
 
 
