@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Itemframe from '../components/Itemframe'
 
 
-const GetCharacters = () => {
+const GetCharacters = ({close}) => {
 
     const [characterData, setcharacterData] = useState([]);
     const [characterArray, setcharacterArray] = useState([]);
@@ -96,7 +96,7 @@ const GetCharacters = () => {
             { Loading && <h3>Loading...</h3>}
             {
                 characterData.map( character =>(
-                    <div className="column is-1" key={character.uniqueKey}>
+                    <div className="column is-1" key={character.uniqueKey} onClick={close}>
                         <Itemframe {...character}></Itemframe>
                     </div>
                 ))

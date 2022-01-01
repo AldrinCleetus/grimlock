@@ -1,16 +1,40 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
+import { CharacterContext } from '../Helper/Context';
 
 
-const Itemframe = ({frameImage,name,rarity}) => {
+const Itemframe = ({frameImage,name,rarity,toggleModal,placeholder,selectedID}) => {
+
+
+    const {currentCharacter, setcurrentCharacter} = useContext(CharacterContext)
 
     const [isRarity] = useState(rarity)
     const [backgroundColor,setBackgroundColor] =  useState("grey") 
 
-    const [isSelected,setIsSelected] = useState(false)
+
+    // its a empty frame
+    if(toggleModal !== undefined){
+        
+        frameImage = placeholder[selectedID].frameImage
+        name = placeholder[selectedID].name
+    }
 
     const userSelected = ()=>{
-        console.log(name)
-        setIsSelected(true)
+        setcurrentCharacter( prevState=> ({
+            ...prevState,
+            frameImage: frameImage,
+            name: name,
+            rarity: rarity
+        }))
+
+        if(toggleModal !== undefined){    
+            toggleModal()
+            setcurrentCharacter( prevState=> ({
+                ...prevState,
+                id: selectedID
+            }))
+        }
+
+
     }
 
     useEffect(() =>{

@@ -66,9 +66,28 @@ const CharacterBuild = ()=>{
 
                                 </div>
                             </div>
+                            
 
 
                             <div className="column is-7">
+
+                            <h6 className="is-size-4 ">Weapons</h6>
+                                
+                                <div className="columns is-centered">
+                                    <div className="column is-2 mx-auto">
+                                        <Itemframe {...artifactType}></Itemframe>
+                                    </div>
+                                    <div className="column is-2 mx-auto">
+                                        <Itemframe {...artifactType}></Itemframe>
+                                    </div>
+                                    <div className="column is-2 mx-auto">
+                                        <Itemframe {...artifactType}></Itemframe>
+                                    </div>
+                                        
+
+                                </div>
+
+
                                 <h6 className="is-size-4 ">Artifact Stat</h6>
                                 
                                 <div className="columns is-centered">
@@ -96,12 +115,11 @@ const CharacterBuild = ()=>{
                                     </div>
                                     <div className="column is-2 mx-auto">
                                         <Itemframe {...artifact}></Itemframe>
-                                    </div>
-
-
-                                        
+                                    </div>   
 
                                 </div>
+
+                                
 
                                 
                                 
@@ -112,9 +130,17 @@ const CharacterBuild = ()=>{
                                             2 piece: Elemental Burst DMG +20% placeholder
                                         </p>
                                         <p className="is-size-4 has-text-left">
-                                            4 piece: something something something
+                                            4 piece: something something somethingsomething
+                                             something somethingsomething something somethingsomething 
+                                             something somethingsomething something somethingsomething 
+                                             something somethingsomething something somethingsomething
+                                             something somethingsomething something somethingsomething
+                                             something somethingsomething something somethingsomething 
+                                             something somethingsomething something somethingsomething 
+                                             something somethingsomething something something
                                         </p>
                                     </div>
+                                    
                                 </div>
 
 
