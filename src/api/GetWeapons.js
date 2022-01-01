@@ -2,23 +2,23 @@ import { useState, useEffect } from 'react'
 import Itemframe from '../components/Itemframe'
 
 
-const GetArtifacts = ({close}) => {
+const GetWeapons = ({close}) => {
 
-    const [artifacts, setArtifacts] = useState([]);
-    const [artifactDetails, setArtifactDetails] = useState([]);
+    const [weapons, setWeapons] = useState([]);
+    const [weaponsDetails, setWeaponsDetails] = useState([]);
 
     const [Loading,setLoading] = useState(false)
 
     let controller = new AbortController();
 
-    const getArtifactArray = async ()=>{
-        const response = await fetch(`https://api.genshin.dev/artifacts`,{
+    const getWeaponArray = async ()=>{
+        const response = await fetch(`https://api.genshin.dev/weapons`,{
             signal: controller.signal
           })
         const data = await response.json()
 
        
-        setArtifacts(data)
+        setWeapons(data)
         
     }
 
@@ -26,9 +26,9 @@ const GetArtifacts = ({close}) => {
     
 
 
-    const getArtifactDetails = async ()=> {
+    const getWeaponDetails = async ()=> {
 
-        if (artifacts.length === 0) {
+        if (weapons.length === 0) {
             console.log("No characters!")
             return
         }
@@ -38,8 +38,8 @@ const GetArtifacts = ({close}) => {
         console.log("Fetching!")
         setLoading(true)
 
-        for (let index = 0; index < artifacts.length; index++) {
-            const response = await fetch(`https://api.genshin.dev/artifacts/${artifacts[index]}`,{
+        for (let index = 0; index < weapons.length; index++) {
+            const response = await fetch(`https://api.genshin.dev/weapons/${weapons[index]}`,{
                 signal: controller.signal
               })
             
@@ -47,8 +47,8 @@ const GetArtifacts = ({close}) => {
                 console.log("seems good")
                 const data = await response.json()
 
-                //Checking if icon exists for the artifacts if not skip em...
-                const ImageExists = await fetch(`https://api.genshin.dev/artifacts/${artifacts[index]}/flower-of-life`,{
+                //Checking if icon exists for the weapons if not skip em...
+                const ImageExists = await fetch(`https://api.genshin.dev/weapons/${weapons[index]}/icon`,{
                     signal: controller.signal
                   })
 
@@ -57,7 +57,7 @@ const GetArtifacts = ({close}) => {
                     continue;
                 }
 
-                data.frameImage = `https://api.genshin.dev/artifacts/${artifacts[index]}/flower-of-life`
+                data.frameImage = `https://api.genshin.dev/weapons/${weapons[index]}/icon`
                 data.uniqueKey = index + 2
                 data.rarity = data.max_rarity
                 tempData.push(data)
@@ -73,16 +73,16 @@ const GetArtifacts = ({close}) => {
         }
 
         setLoading(false)
-        setArtifactDetails(tempData)
+        setWeaponsDetails(tempData)
 
-        sessionStorage.setItem("artifactDetails", JSON.stringify(tempData));
+        sessionStorage.setItem("weaponDetails", JSON.stringify(tempData));
         
     }
 
 
 
     useEffect(() => {
-        getArtifactArray().catch(err =>{
+        getWeaponArray().catch(err =>{
             console.log(err)
         })
 
@@ -94,13 +94,13 @@ const GetArtifacts = ({close}) => {
 
     useEffect(() => {
 
-        if(sessionStorage.getItem("artifactDetails") === null)
+        if(sessionStorage.getItem("weaponDetails") === null)
         {
-            getArtifactDetails().catch(err =>{
+            getWeaponDetails().catch(err =>{
                 console.log(err)
             })
         }else{
-            setArtifactDetails(JSON.parse(sessionStorage.getItem("artifactDetails")))
+            setWeaponsDetails(JSON.parse(sessionStorage.getItem("weaponDetails")))
         }
 
         console.log("rendering")
@@ -109,7 +109,7 @@ const GetArtifacts = ({close}) => {
             //cleanup
             controller.abort()
         }
-    }, [artifacts]);
+    }, [weapons]);
 
 
 
@@ -117,9 +117,9 @@ const GetArtifacts = ({close}) => {
         <>
             { Loading && <h3>Loading...</h3>}
             {
-                artifactDetails.map( artifact =>(
-                    <div className="column is-1" key={artifact.uniqueKey} onClick={close}>
-                        <Itemframe {...artifact}></Itemframe>
+                weaponsDetails.map( weapon =>(
+                    <div className="column is-1" key={weapon.uniqueKey} onClick={close}>
+                        <Itemframe {...weapon}></Itemframe>
                     </div>
                 ))
             }
@@ -131,4 +131,4 @@ const GetArtifacts = ({close}) => {
 
 }
  
-export default GetArtifacts;
+export default GetWeapons;

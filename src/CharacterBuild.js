@@ -113,9 +113,6 @@ const CharacterBuild = ()=>{
                                     <div className="column is-2 mx-auto">
                                         <Itemframe {...artifact}></Itemframe>
                                     </div>
-                                    <div className="column is-2 mx-auto">
-                                        <Itemframe {...artifact}></Itemframe>
-                                    </div>   
 
                                 </div>
 
