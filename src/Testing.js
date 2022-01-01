@@ -13,11 +13,11 @@ const Testing = () => {
     const [characterSelecter,setCharacterSelecter] = useState(false)
 
 
- 
+    // global state
     const [currentCharacter, setcurrentCharacter] = useState(null);
 
 
-    const [selectedArtifact, setSelectedArtifact] = useState([{
+    const [selectedCharacter, setselectedCharacter] = useState([{
             id: 0,
             frameImage: "images/timepiece.png", 
             name : "select"
@@ -40,8 +40,26 @@ const Testing = () => {
         setCharacterSelecter(!characterSelecter)
     }
 
+   
+
+
     useEffect(() => {
-        console.log(currentCharacter)
+        console.log(selectedCharacter)
+        if(currentCharacter === null) return
+
+        let tempState = selectedCharacter.map( character =>{
+            if(character.id === currentCharacter.id){
+                return (currentCharacter)
+            }
+            return character
+        })
+
+        setselectedCharacter(tempState)
+
+        
+
+
+
     }, [currentCharacter]);
 
     return(
@@ -57,13 +75,13 @@ const Testing = () => {
 
                     <div className="columns is-centered">
                         <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={characterSelecterClicked} placeholder={selectedArtifact} selectedID={0}></Itemframe>
+                            <Itemframe toggleModal={characterSelecterClicked} placeholder={selectedCharacter} selectedID={0}></Itemframe>
                         </div>
                         <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={characterSelecterClicked} placeholder={selectedArtifact} selectedID={1}></Itemframe>
+                            <Itemframe toggleModal={characterSelecterClicked} placeholder={selectedCharacter} selectedID={1}></Itemframe>
                         </div>
                         <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={characterSelecterClicked} placeholder={selectedArtifact} selectedID={2}></Itemframe>
+                            <Itemframe toggleModal={characterSelecterClicked} placeholder={selectedCharacter} selectedID={2}></Itemframe>
                         </div>
                         
                             
