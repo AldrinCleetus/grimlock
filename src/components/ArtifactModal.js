@@ -3,7 +3,7 @@ import GetArtifacts from "../api/GetArtifacts";
 
 const ArtifactModal = ({toggle,close}) => {
     return ( 
-        <div className={'has-background-black modal ' + (toggle ? 'is-active': '')} >
+        <div className={' modal ' + (toggle ? 'is-active': '')} >
                         <div className="modal-background"></div>
                         <div className="modal-content">
                             <div className="columns m-3 is-centered is-multiline " >

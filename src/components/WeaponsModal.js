@@ -5,7 +5,7 @@ import GetWeapons from "../api/GetWeapons";
 
 const WeaponsModal = ({toggle,close}) => {
     return ( 
-        <div className={'has-background-black modal ' + (toggle ? 'is-active': '')} >
+        <div className={' modal ' + (toggle ? 'is-active': '')} >
                         <div className="modal-background"></div>
                         <div className="modal-content">
                             <div className="columns m-3 is-centered is-multiline " >
