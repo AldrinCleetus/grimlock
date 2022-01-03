@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Itemframe from '../components/Itemframe'
+import ProgressBar from '../components/ProgressBar';
 
 
 const GetArtifacts = ({close}) => {
@@ -8,6 +9,8 @@ const GetArtifacts = ({close}) => {
     const [artifactDetails, setArtifactDetails] = useState([]);
 
     const [Loading,setLoading] = useState(false)
+    const [loadingValue,setLoadingValue] = useState(0)
+    const [loadingMaxValue,setLoadingMaxValue] = useState(100)
 
     let controller = new AbortController();
 
@@ -32,6 +35,7 @@ const GetArtifacts = ({close}) => {
             console.log("No characters!")
             return
         }
+        setLoadingMaxValue(artifacts.length)
 
 
         let tempData = []
@@ -61,6 +65,9 @@ const GetArtifacts = ({close}) => {
                 data.uniqueKey = index + 2
                 data.rarity = data.max_rarity
                 tempData.push(data)
+                setLoadingValue(prevState =>{
+                    return prevState + 1
+                })
             }
             else if ( response.status === 404){
                 console.log("Error 404")
@@ -115,7 +122,7 @@ const GetArtifacts = ({close}) => {
 
     return ( 
         <>
-            { Loading && <h3>Loading...</h3>}
+            { Loading && <ProgressBar currValue={loadingValue} maxValue={loadingMaxValue}></ProgressBar> }
             {
                 artifactDetails.map( artifact =>(
                     <div className="column is-1" key={artifact.uniqueKey} onClick={close}>

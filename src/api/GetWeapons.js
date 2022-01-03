@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Itemframe from '../components/Itemframe'
+import ProgressBar from '../components/ProgressBar';
 
 
 const GetWeapons = ({close}) => {
@@ -8,6 +9,8 @@ const GetWeapons = ({close}) => {
     const [weaponsDetails, setWeaponsDetails] = useState([]);
 
     const [Loading,setLoading] = useState(false)
+    const [loadingValue,setLoadingValue] = useState(0)
+    const [loadingMaxValue,setLoadingMaxValue] = useState(100)
 
     let controller = new AbortController();
 
@@ -32,6 +35,8 @@ const GetWeapons = ({close}) => {
             console.log("No characters!")
             return
         }
+
+        setLoadingMaxValue(weapons.length)
 
 
         let tempData = []
@@ -59,8 +64,11 @@ const GetWeapons = ({close}) => {
 
                 data.frameImage = `https://api.genshin.dev/weapons/${weapons[index]}/icon`
                 data.uniqueKey = index + 2
-                data.rarity = data.max_rarity
+                data.rarity = data.rarity
                 tempData.push(data)
+                setLoadingValue(prevState =>{
+                    return prevState + 1
+                })
             }
             else if ( response.status === 404){
                 console.log("Error 404")
@@ -115,7 +123,7 @@ const GetWeapons = ({close}) => {
 
     return ( 
         <>
-            { Loading && <h3>Loading...</h3>}
+            { Loading && <ProgressBar currValue={loadingValue} maxValue={loadingMaxValue}></ProgressBar> }
             {
                 weaponsDetails.map( weapon =>(
                     <div className="column is-1" key={weapon.uniqueKey} onClick={close}>

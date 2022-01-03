@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Itemframe from '../components/Itemframe'
+import ProgressBar from '../components/ProgressBar';
 
 
 const GetCharacters = ({close}) => {
@@ -108,14 +109,7 @@ const GetCharacters = ({close}) => {
 
     return ( 
         <>
-            { Loading && 
-            <div className='column '>
-                <div>
-                <img src="../images/256.png" alt="404" />
-                </div>
-
-                <progress class="progress is-link " value={loadingValue} max={loadingMaxValue}>90%</progress>
-            </div> }
+            { Loading && <ProgressBar currValue={loadingValue} maxValue={loadingMaxValue}></ProgressBar> }
             {
                 characterData.map( character =>(
                     <div className="column is-1" key={character.uniqueKey} onClick={close}>
