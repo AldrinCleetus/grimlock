@@ -6,7 +6,7 @@ const CharacterModal = ({toggle,close}) => {
         <div className={'modal ' + (toggle ? 'is-active': '')} >
                         <div className="modal-background"></div>
                         <div className="modal-content">
-                            <div className="columns m-3 is-centered is-multiline " >
+                            <div className="columns m-0 is-centered is-multiline " >
                                 <GetCharacters close={close}></GetCharacters>
                             </div>
                         </div>
