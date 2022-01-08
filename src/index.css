@@ -97,8 +97,8 @@ html,body{
 
 .build-name{
   width: 100%;
-
-
+  text-align: left;
+  
   border:none;
   background-image:none;
   background-color:transparent;

@@ -16,13 +16,6 @@ const Navbar = ()=>{
                     <li className="py-4 ">
                         <Link to="/">Character Build</Link>
                     </li>
-                    <li className="py-4">
-                        <Link to="/test">Testing</Link>
-                    </li>
-
-                    <li className="py-4">
-                        <Link to="/artifacts">Artifacts</Link>
-                    </li>
                 </ul>
             </nav>
 

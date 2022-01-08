@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createRef, useRef } from 'react';
 import ArtifactModal from './components/ArtifactModal';
 import ArtifactStatModal from './components/ArtifactStatModal';
 import CharacterModal from './components/CharacterModal';
@@ -6,6 +6,8 @@ import Itemframe from './components/Itemframe';
 import WeaponsModal from './components/WeaponsModal';
 import { CharacterContext } from './Helper/Context';
 import CharacterGacha from './components/CharacterGacha';
+import html2canvas from 'html2canvas'
+
 
 
 
@@ -125,10 +127,28 @@ const CharacterBuild = () => {
     const ArtifactStatClickedCirclet = ()=>{
         setartifactStatSelecterCirclet(!artifactStatSelecterCirclet)
     }
+
+    //image stuff
+    const imageRef = useRef()
+    const handleDownloadImage = async () => {
+        const element = imageRef.current;
+        const canvas = await html2canvas(element,{allowTaint:true,letterRendering: 1,useCORS: true,backgroundColor:"#262626",});
     
-
-   
-
+        const data = canvas.toDataURL('image/jpg');
+        const link = document.createElement('a');
+    
+        if (typeof link.download === 'string') {
+          link.href = data;
+          link.download = 'image.jpg';
+    
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          window.open(data);
+        }
+      };
+  
 
     useEffect(() => {
         if(currentCharacter === null) return
@@ -149,10 +169,10 @@ const CharacterBuild = () => {
     }, [currentCharacter]);
 
     return(
-        <CharacterContext.Provider value={{currentCharacter, setcurrentCharacter}}>
+        <CharacterContext.Provider value={{currentCharacter, setcurrentCharacter}}  >
         
-        <div className="column max-height has-background-primary has-text-info">
-            <div className="test is-fullwidth has-text-centered is-size-1">
+        <div className="column max-height has-background-primary has-text-info"  >
+            <div className="test is-fullwidth has-text-centered is-size-1" >
                     <div>
                     <h1 className="">Character Build</h1>
                     </div>
@@ -167,9 +187,9 @@ const CharacterBuild = () => {
                     { artifactStatSelecterGoblet && <ArtifactStatModal toggle={artifactStatSelecterGoblet} close={ArtifactStatClickedGoblet} type={"goblet"} ></ArtifactStatModal>}
                     { artifactStatSelecterCirclet && <ArtifactStatModal toggle={artifactStatSelecterCirclet} close={ArtifactStatClickedCirclet} type={"circlet"} ></ArtifactStatModal>}
 
-                    <div className="character-build container p-2">
+                    <div className="character-build container p-2 " ref={imageRef}>
                         <div className="p-1 is-size-3">
-                        <input className=" build-name has-text-info p-2 is-size-2" type="text" placeholder="Enter Build Name: "/>
+                            <h2 className=" build-name has-text-info p-2 is-size-2" contentEditable={true} spellCheck={false}>Build name here</h2>
                         </div>
 
                         <div className="horizontal-bar"></div>
@@ -266,6 +286,10 @@ const CharacterBuild = () => {
                         </div>
 
 
+                    </div>
+
+                    <div className='mt-6 '>
+                        <button class="button is-info is-rounded is-outlined is-large " onClick={handleDownloadImage}>Download Build</button>
                     </div>
 
                    

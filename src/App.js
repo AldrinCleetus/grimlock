@@ -15,7 +15,6 @@ const App = ()=>{
                 <Routes>
                     <Route exact path="/" element={<CharacterBuild/>} />
 
-                    <Route exact path="/test" element={<Testing/>} />
 
                     <Route path="*" element={<ErrorPage/>} />
                 </Routes>
