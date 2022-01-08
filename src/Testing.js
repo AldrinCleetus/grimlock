@@ -8,10 +8,6 @@ import { CharacterContext } from './Helper/Context';
 
 
 
-
-
-
-
 const Testing = () => {
 
     // Activates the character modal
@@ -148,68 +144,7 @@ const Testing = () => {
 
     return(
         <CharacterContext.Provider value={{currentCharacter, setcurrentCharacter}}>
-        {/* <div className="column max-height has-background-primary has-text-info">
-            <div className=" is-fullwidth has-text-centered is-size-1 ">
-                    <div>
-                    <h1 className="">Characters!</h1>
-                    </div>
-                    
-                    
-                    { characterSelecter && <CharacterModal toggle={characterSelecter} close={characterSelecterClicked} ></CharacterModal>}
-
-                    { artifactSelecter && <ArtifactModal toggle={artifactSelecter} close={ArtifactSelecterClicked} ></ArtifactModal>}
-
-                    { weaponSelecter && <WeaponsModal toggle={weaponSelecter} close={WeaponSelecterClicked} ></WeaponsModal>}
-
-
-                    
-
-                    <div className="columns is-centered">
-                        <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={characterSelecterClicked} placeholder={selectedCharacter} selectedID={0}></Itemframe>
-                        </div>
-                        <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={characterSelecterClicked} placeholder={selectedCharacter} selectedID={1}></Itemframe>
-                        </div>
-                        <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={characterSelecterClicked} placeholder={selectedCharacter} selectedID={2}></Itemframe>
-                        </div>
-                    </div>
-
-                    <div className="columns is-centered">
-                        <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={ArtifactSelecterClicked} placeholder={selectedCharacter} selectedID={3}></Itemframe>
-                        </div>
-                        <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={ArtifactSelecterClicked} placeholder={selectedCharacter} selectedID={4}></Itemframe>
-                        </div>
-                        <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={ArtifactSelecterClicked} placeholder={selectedCharacter} selectedID={5}></Itemframe>
-                        </div>
-                    </div>
-
-                    <div className="columns is-centered">
-                        <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={WeaponSelecterClicked} placeholder={selectedCharacter} selectedID={3}></Itemframe>
-                        </div>
-                        <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={WeaponSelecterClicked} placeholder={selectedCharacter} selectedID={4}></Itemframe>
-                        </div>
-                        <div className="column is-2 mx-auto">
-                            <Itemframe toggleModal={WeaponSelecterClicked} placeholder={selectedCharacter} selectedID={5}></Itemframe>
-                        </div>
-                    </div>
-
-                    
-
-                    
-
-                    
-
-                    
-
-            </div>
-        </div> */}
+        
         <div className="column max-height has-background-primary has-text-info">
             <div className="test is-fullwidth has-text-centered is-size-1">
                     <div>
@@ -314,32 +249,6 @@ const Testing = () => {
                                     </div>
 
                                 </div>
-
-                                
-
-                                
-                                
-
-                                {/* <div className="columns">
-                                    <div className="artifact-effect column ml-3 testtext">
-                                        <p className="is-size-4 has-text-left mb-2">
-                                            2 piece: Elemental Burst DMG +20% placeholder
-                                        </p>
-                                        <p className="is-size-4 has-text-left">
-                                            4 piece: something something somethingsomething
-                                             something somethingsomething something somethingsomething 
-                                             something somethingsomething something somethingsomething 
-                                             something somethingsomething something somethingsomething
-                                             something somethingsomething something somethingsomething
-                                             something somethingsomething something somethingsomething 
-                                             something somethingsomething something somethingsomething 
-                                             something somethingsomething something something
-                                        </p>
-                                    </div>
-                                    
-                                </div> */}
-
-
                                 
                                 </div>
 

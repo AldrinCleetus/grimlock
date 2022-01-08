@@ -52,11 +52,19 @@ const GetCharacters = ({close}) => {
         setLoading(true)
 
         for (let index = 0; index < characterArray.length; index++) {
+
+            console.log()
+            
+            if( characterArray[index].indexOf("traveler") >= 0){
+                continue;
+            }
+
             const response = await fetch(`https://api.genshin.dev/characters/${characterArray[index]}`,{
                 signal: controller.signal
               })
             const data = await response.json()
             data.frameImage = `https://api.genshin.dev/characters/${characterArray[index]}/icon`
+            data.gacha = `https://api.genshin.dev/characters/${characterArray[index]}/gacha-splash`
             data.uniqueKey = index + 2
             tempData.push(data)
             setLoadingValue(prevState =>{

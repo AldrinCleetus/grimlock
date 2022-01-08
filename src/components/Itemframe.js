@@ -1,8 +1,8 @@
-import {useState, useEffect, useContext} from 'react';
+import { useContext} from 'react';
 import { CharacterContext } from '../Helper/Context';
 
 
-const Itemframe = ({frameImage,name,rarity,toggleModal,placeholder,selectedID}) => {
+const Itemframe = ({frameImage,name,rarity,toggleModal,placeholder,selectedID,gacha}) => {
 
 
     const {currentCharacter, setcurrentCharacter} = useContext(CharacterContext)
@@ -24,7 +24,8 @@ const Itemframe = ({frameImage,name,rarity,toggleModal,placeholder,selectedID}) 
             ...prevState,
             frameImage: frameImage,
             name: name,
-            rarity: rarity
+            rarity: rarity,
+            gachaArt: gacha
         }))
 
 
@@ -60,7 +61,7 @@ const Itemframe = ({frameImage,name,rarity,toggleModal,placeholder,selectedID}) 
         <div className={`card charactericon has-text-black characterSelector has-background-${currentRarity} is-text-overflow`} onClick={userSelected}>
                                 <div className="card-image is-1">
                                     <figure className="image ">
-                                        <img src={frameImage} />
+                                        <img src={frameImage} alt='Error'/>
                                     </figure>
                                 </div>
                                 <div className=" is-text-overflow has-background-link rounded-corner">
