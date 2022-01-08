@@ -4,21 +4,33 @@ import { Link } from "react-router-dom";
 const Navbar = ()=>{
 
     return(
-        <div className="column max-height is-2"> 
-            <nav className="menu">
-                <div className="navbar-brand is-size-4 column">
-                    <a href="/">
-                        <img src="images/test.png" alt="test" />
-                    </a>
-                </div>
+    
+        <div className="columns max-height sidebar is-multiline  is-vcentered">
+            <div className="column is-full p-5 ">
+                <img src="images/test.png" alt="logo"  />
+            </div>
 
-                <ul className="section p-2 is-size-4">
-                    <li className="py-4 ">
-                        <Link to="/">Character Build</Link>
-                    </li>
-                </ul>
-            </nav>
+            <div className="column ">
+            <ul className=" section p-2 is-size-4">
+                     <li className="p-4 mb-2 has-background-primary rounded-links">
+                         <Link to="/">Character Build</Link>
+                     </li>
 
+                     <li className="p-4 mb-2 has-background-primary rounded-links">
+                         <Link to="/">Team Comp</Link>
+                     </li>
+                     
+                 </ul>
+            </div>
+            <div className="column is-full"></div>
+            <div className="column is-full"></div>
+            <div className="column is-full"></div>
+            <div className="column is-full"></div>
+            <div className="column is-full"></div>
+
+            <div className="column is-full has-text-grey p-5 mt-auto">
+                <p>This site is not affiliated with or endorsed by miHoYo.</p>
+            </div>
             
         </div>
         

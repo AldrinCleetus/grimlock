@@ -20,8 +20,7 @@ html,body{
 }
 
 .rounded-links{
-  border: 20px;
-  background-color: gray;
+  border-radius: 0.5em;
 }
 
 .charactericon{
@@ -127,6 +126,15 @@ html,body{
 
 .errorPage{
   height: 200px;
+}
+
+.sidebar{
+  width: 14%;
+}
+
+
+.disclaimer{
+  align-self: flex-start;
 }
 
 

@@ -290,10 +290,12 @@ const CharacterBuild = () => {
 
                     <div className='mt-6 '>
                         <button class="button is-info is-rounded is-outlined is-large " onClick={handleDownloadImage}>Download Build</button>
-                    </div>
-
-                   
+                    </div>    
             </div>
+
+
+            
+
         </div>
         </CharacterContext.Provider>
     )
