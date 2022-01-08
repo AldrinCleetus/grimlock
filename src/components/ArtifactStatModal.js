@@ -5,31 +5,36 @@ const ArtifactStats = {
         {
             name: "HP%",
             uniqueKey: 0,
-            frameImage: "images/timepiece.png"
+            frameImage: "images/timepiece.png",
+            rarity: 5
 
         },
         {
             name: "ATK%",
             uniqueKey: 1,
-            frameImage: "images/timepiece.png"
+            frameImage: "images/timepiece.png",
+            rarity:5
 
         },
         {
             name: "DEF%",
             uniqueKey: 3,
-            frameImage: "images/timepiece.png"
+            frameImage: "images/timepiece.png",
+            rarity:5
 
         },
         {
             name: "ER%",
             uniqueKey: 4,
-            frameImage: "images/timepiece.png"
+            frameImage: "images/timepiece.png",
+            rarity:5
 
         },
         {
             name: "EM",
             uniqueKey: 5,
-            frameImage: "images/timepiece.png"
+            frameImage: "images/timepiece.png",
+            rarity:5
 
         },
     ],
@@ -37,106 +42,127 @@ const ArtifactStats = {
         {
             name: "HP%",
             uniqueKey: 6,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "ATK%",
             uniqueKey: 7,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "DEF%",
             uniqueKey: 8,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "PYRO %",
             uniqueKey: 9,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "ELECTRO %",
             uniqueKey: 10,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "CRYO %",
             uniqueKey: 11,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "HYDRO %",
             uniqueKey: 12,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "ANEMO %",
             uniqueKey: 13,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "GEO %",
             uniqueKey: 14,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "PHYSICAL %",
             uniqueKey: 15,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
         {
             name: "EM",
             uniqueKey: 16,
-            frameImage: "images/goblet.png"
+            frameImage: "images/goblet.png",
+            rarity:5
 
         },
     ],
     circlet:[{
         name: "HP%",
         uniqueKey: 17,
-        frameImage: "images/circlet.png"
+        frameImage: "images/circlet.png",
+        rarity:5
     },
     {
         name: "ATK%",
         uniqueKey: 18,
-        frameImage: "images/circlet.png"
+        frameImage: "images/circlet.png",
+        rarity:5
     },
     {
         name: "DEF%",
         uniqueKey: 19,
-        frameImage: "images/circlet.png"
+        frameImage: "images/circlet.png",
+        rarity:5
     },
     {
         name: "CRIT RATE%",
         uniqueKey: 20,
-        frameImage: "images/circlet.png"
+        frameImage: "images/circlet.png",
+        rarity:5
     },
     {
         name: "CRIT DMG%",
         uniqueKey: 21,
-        frameImage: "images/circlet.png"
+        frameImage: "images/circlet.png",
+        rarity:5
     },
     {
         name: "HEALING%",
         uniqueKey: 22,
-        frameImage: "images/circlet.png"
+        frameImage: "images/circlet.png",
+        rarity:5
     },
     {
         name: "EM",
         uniqueKey: 23,
-        frameImage: "images/circlet.png"
+        frameImage: "images/circlet.png",
+        rarity:5
     },]
 }
+
+
+
 
 const ArtifactStatModal = ({toggle,close,type}) => {
     return ( 
