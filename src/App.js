@@ -1,7 +1,7 @@
 import Navbar from "./navbar";
 import CharacterBuild from "./CharacterBuild";
 import Testing from "./Testing";
-import ArtifactTest from "./ArtifactsTest";
+import ErrorPage from "./components/ErrorPage";
 import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 
 
@@ -17,7 +17,7 @@ const App = ()=>{
 
                     <Route exact path="/test" element={<Testing/>} />
 
-                    <Route exact path="/artifacts" element={<ArtifactTest/>} />
+                    <Route path="*" element={<ErrorPage/>} />
                 </Routes>
             </div>  
         </section>

@@ -18,8 +18,8 @@ const CharacterGacha = ({gachaArt,toggle,selectedID}) => {
     }
 
     return ( 
-        <div className='gachaImage'>
-            <img className="m-auto character-splash-img gacha-size " src={gachaArt} alt="error" onClick={clicked} />
+        <div className='gachaImage' onClick={clicked}>
+            <img className="m-auto character-splash-img gacha-size " src={gachaArt} alt="Select Character"  />
         </div>
      );
 }
