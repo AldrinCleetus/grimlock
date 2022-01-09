@@ -57,7 +57,8 @@ const GetArtifacts = ({close}) => {
         let index = 0
         const data = filteredjsons.map(e =>{
             
-            let formattedName = artifacts[index]
+            let formattedName = e.name.toLowerCase()
+            formattedName = formattedName.replace(/[^a-zA-Z ]/g, "-")
             formattedName = formattedName.replace(/\s+/g, '-')
             index++
 
