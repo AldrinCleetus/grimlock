@@ -33,7 +33,7 @@ npm run start
 * [Genshin API](https://api.genshin.dev/) - A fan-made Genshin Impact API for easy access to game data.
 * [Bulma](https://bulma.io/) - Bulma is a free, open source framework that provides ready-to-use frontend components that you can easily combine to build responsive web interfaces.
 
-## Project Screen Shot(s)
+## Project Screenshot(s)
 ![screenshot](https://i.imgur.com/6LPYnTX.png)
 
 ## Author
