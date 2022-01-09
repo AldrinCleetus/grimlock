@@ -1,7 +1,7 @@
 import Navbar from "./navbar";
 import CharacterBuild from "./CharacterBuild";
-import Testing from "./Testing";
 import ErrorPage from "./components/ErrorPage";
+import UnderContruction from "./components/UnderContruction";
 import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 
 
@@ -14,6 +14,8 @@ const App = ()=>{
                 <Navbar></Navbar>
                 <Routes>
                     <Route exact path="/" element={<CharacterBuild/>} />
+
+                    <Route exact path="/teamcomp" element={<UnderContruction/>} />
 
 
                     <Route path="*" element={<ErrorPage/>} />

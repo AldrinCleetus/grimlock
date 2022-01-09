@@ -17,7 +17,7 @@ const Navbar = ()=>{
                      </li>
 
                      <li className="p-4 mb-2 has-background-primary rounded-links">
-                         <Link to="/">Team Comp</Link>
+                         <Link to="/teamcomp">Team Comp</Link>
                      </li>
                      
                  </ul>
