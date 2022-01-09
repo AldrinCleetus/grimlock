@@ -6,7 +6,7 @@ const ProgressBar = ({currValue,maxValue}) => {
                     <p >Give paimon some time</p>
                 </div>
 
-                <progress class="progress is-link " value={currValue} max={maxValue}></progress>
+                {/* <progress class="progress is-link " value={currValue} max={maxValue}></progress> */}
             </div>
      );
 }

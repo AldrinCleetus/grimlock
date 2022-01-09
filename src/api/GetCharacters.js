@@ -9,12 +9,11 @@ const GetCharacters = ({close}) => {
     const [characterArray, setcharacterArray] = useState([]);
 
     const [Loading,setLoading] = useState(false)
-    const [loadingValue,setLoadingValue] = useState(0)
-    const [loadingMaxValue,setLoadingMaxValue] = useState(100)
-
 
     let controller = new AbortController();
 
+
+    // Getting all the character names
     const getCharacterArray = async ()=>{
         const response = await fetch(`https://api.genshin.dev/characters`,{
             signal: controller.signal
@@ -25,12 +24,11 @@ const GetCharacters = ({close}) => {
         setcharacterArray(data)
         console.log(characterArray)
         
-        
     }
 
 
     
-
+    // Getting all the character details
 
     const getAllCharacters = async ()=> {
 
@@ -40,43 +38,37 @@ const GetCharacters = ({close}) => {
             console.log("No characters!")
             return
         }
-        console.log(characterArray.length)
-        setLoadingMaxValue(characterArray.length)
-
         
-        
-
-
-        let tempData = []
         console.log("Fetching!")
+
+
         setLoading(true)
 
-        for (let index = 0; index < characterArray.length; index++) {
+        
+        const res = await Promise.all(characterArray.map(u => fetch(`https://api.genshin.dev/characters/${u}`,{signal: controller.signal})))
+        const jsons = await Promise.all(res.map(r => r.json()))
 
-            console.log()
+        let index = 0
+        const data = jsons.map(e =>{
             
-            if( characterArray[index].indexOf("traveler") >= 0){
-                continue;
+            let formattedName = characterArray[index]
+            formattedName = formattedName.replace(/\s+/g, '-')
+            index++
+
+            return{
+                ...e,
+                frameImage : `https://api.genshin.dev/characters/${formattedName}/icon`,
+                gacha : `https://api.genshin.dev/characters/${formattedName}/gacha-splash`,
+                uniqueKey : index
+
             }
-
-            const response = await fetch(`https://api.genshin.dev/characters/${characterArray[index]}`,{
-                signal: controller.signal
-              })
-            const data = await response.json()
-            data.frameImage = `https://api.genshin.dev/characters/${characterArray[index]}/icon`
-            data.gacha = `https://api.genshin.dev/characters/${characterArray[index]}/gacha-splash`
-            data.uniqueKey = index + 2
-            tempData.push(data)
-            setLoadingValue(prevState =>{
-                return prevState + 1
-            })
-            
-        }
+        })
+        console.log("DATAAA",jsons)
 
         setLoading(false)
-        setcharacterData(tempData)
+        setcharacterData(data)
 
-        sessionStorage.setItem("characterData", JSON.stringify(tempData));
+        sessionStorage.setItem("characterData", JSON.stringify(data));
         
     }
 
@@ -117,7 +109,7 @@ const GetCharacters = ({close}) => {
 
     return ( 
         <>
-            { Loading && <ProgressBar currValue={loadingValue} maxValue={loadingMaxValue}></ProgressBar> }
+            { Loading && <ProgressBar></ProgressBar> }
             {
                 characterData.map( character =>(
                     <div className="column is-1" key={character.uniqueKey} onClick={close}>
