@@ -30,7 +30,6 @@ const GetArtifacts = ({close}) => {
     const getArtifactDetails = async ()=> {
 
         if (artifacts.length === 0) {
-            console.log("No characters!")
             return
         }
 
@@ -52,7 +51,6 @@ const GetArtifacts = ({close}) => {
             if(value !== "null") return true
         })
 
-        console.log(res)
 
         let index = 0
         const data = filteredjsons.map(e =>{
@@ -107,7 +105,6 @@ const GetArtifacts = ({close}) => {
             setArtifactDetails(JSON.parse(sessionStorage.getItem("artifactDetails")))
         }
 
-        console.log("rendering")
 
         return ()=>{
             //cleanup

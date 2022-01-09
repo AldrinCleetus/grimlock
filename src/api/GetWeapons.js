@@ -30,7 +30,6 @@ const GetWeapons = ({close}) => {
     const getWeaponDetails = async ()=> {
 
         if (weapons.length === 0) {
-            console.log("No characters!")
             return
         }
 

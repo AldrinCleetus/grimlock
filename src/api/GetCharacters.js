@@ -35,7 +35,6 @@ const GetCharacters = ({close}) => {
 
 
         if (characterArray.length === 0) {
-            console.log("No characters!")
             return
         }
         
@@ -63,7 +62,6 @@ const GetCharacters = ({close}) => {
 
             }
         })
-        console.log("DATAAA",jsons)
 
         setLoading(false)
         setcharacterData(data)

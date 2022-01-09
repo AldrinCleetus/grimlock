@@ -1,4 +1,4 @@
-import { useEffect, useState, createRef, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import ArtifactModal from './components/ArtifactModal';
 import ArtifactStatModal from './components/ArtifactStatModal';
 import CharacterModal from './components/CharacterModal';
@@ -289,7 +289,7 @@ const CharacterBuild = () => {
                     </div>
 
                     <div className='mt-6 '>
-                        <button class="button is-info is-rounded is-outlined is-large " onClick={handleDownloadImage}>Download Build</button>
+                        <button className="button is-info is-rounded is-outlined is-large " onClick={handleDownloadImage} >Download Build</button>
                     </div>    
             </div>
 
