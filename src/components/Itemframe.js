@@ -61,7 +61,7 @@ const Itemframe = ({frameImage,name,rarity,toggleModal,placeholder,selectedID,ga
         <div className={`card charactericon has-text-black characterSelector has-background-${currentRarity} is-text-overflow`} onClick={userSelected}>
                                 <div className="card-image is-1">
                                     <figure className="image ">
-                                        <img src={frameImage} alt='Error'/>
+                                        <img src={frameImage} alt='👷‍'/>
                                     </figure>
                                 </div>
                                 <div className=" is-text-overflow has-background-link rounded-corner">

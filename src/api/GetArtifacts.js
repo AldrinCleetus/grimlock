@@ -9,8 +9,6 @@ const GetArtifacts = ({close}) => {
     const [artifactDetails, setArtifactDetails] = useState([]);
 
     const [Loading,setLoading] = useState(false)
-    const [loadingValue,setLoadingValue] = useState(0)
-    const [loadingMaxValue,setLoadingMaxValue] = useState(100)
 
     let controller = new AbortController();
 
@@ -35,54 +33,52 @@ const GetArtifacts = ({close}) => {
             console.log("No characters!")
             return
         }
-        setLoadingMaxValue(artifacts.length)
 
-
-        let tempData = []
         console.log("Fetching!")
         setLoading(true)
 
-        for (let index = 0; index < artifacts.length; index++) {
-            const response = await fetch(`https://api.genshin.dev/artifacts/${artifacts[index]}`,{
-                signal: controller.signal
-              })
+        const res = await Promise.all(artifacts.map(u => fetch(`https://api.genshin.dev/artifacts/${u}`,{signal: controller.signal})))
+        const jsons = await Promise.all(res.map(r => {
             
-            if (response.status >= 200 && response.status <= 299) {
-                console.log("seems good")
-                const data = await response.json()
-
-                //Checking if icon exists for the artifacts if not skip em...
-                const ImageExists = await fetch(`https://api.genshin.dev/artifacts/${artifacts[index]}/flower-of-life`,{
-                    signal: controller.signal
-                  })
-
-                if(ImageExists.status === 404){
-                    console.log("Image doesnt exist")
-                    continue;
-                }
-
-                data.frameImage = `https://api.genshin.dev/artifacts/${artifacts[index]}/flower-of-life`
-                data.uniqueKey = index + 2
-                data.rarity = data.max_rarity
-                tempData.push(data)
-                setLoadingValue(prevState =>{
-                    return prevState + 1
-                })
+            if(!r.ok){
+                return "null"
             }
-            else if ( response.status === 404){
-                console.log("Error 404")
-                continue;
-            }
-
-               
-
             
-        }
+            return r.json()
+        }))
+
+
+        const filteredjsons = jsons.filter(value => {
+            if(value !== "null") return true
+        })
+
+        console.log(res)
+
+        let index = 0
+        const data = filteredjsons.map(e =>{
+            
+            let formattedName = artifacts[index]
+            formattedName = formattedName.replace(/\s+/g, '-')
+            index++
+
+            return{
+                ...e,
+                frameImage : `https://api.genshin.dev/artifacts/${formattedName}/flower-of-life`,
+                uniqueKey : index,
+                rarity : e.max_rarity
+
+            }
+        })
+
+        const finalData = data.filter(value => {
+            if(value !== "null") return true
+        })
+
 
         setLoading(false)
-        setArtifactDetails(tempData)
+        setArtifactDetails(finalData)
 
-        sessionStorage.setItem("artifactDetails", JSON.stringify(tempData));
+        sessionStorage.setItem("artifactDetails", JSON.stringify(finalData));
         
     }
 
@@ -122,7 +118,7 @@ const GetArtifacts = ({close}) => {
 
     return ( 
         <>
-            { Loading && <ProgressBar currValue={loadingValue} maxValue={loadingMaxValue}></ProgressBar> }
+            { Loading && <ProgressBar></ProgressBar> }
             {
                 artifactDetails.map( artifact =>(
                     <div className="column is-1" key={artifact.uniqueKey} onClick={close}>
