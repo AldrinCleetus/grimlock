@@ -9,8 +9,6 @@ const GetWeapons = ({close}) => {
     const [weaponsDetails, setWeaponsDetails] = useState([]);
 
     const [Loading,setLoading] = useState(false)
-    const [loadingValue,setLoadingValue] = useState(0)
-    const [loadingMaxValue,setLoadingMaxValue] = useState(100)
 
     let controller = new AbortController();
 
@@ -36,54 +34,31 @@ const GetWeapons = ({close}) => {
             return
         }
 
-        setLoadingMaxValue(weapons.length)
 
-
-        let tempData = []
         console.log("Fetching!")
         setLoading(true)
 
-        for (let index = 0; index < weapons.length; index++) {
-            const response = await fetch(`https://api.genshin.dev/weapons/${weapons[index]}`,{
-                signal: controller.signal
-              })
+        const res = await Promise.all(weapons.map(u => fetch(`https://api.genshin.dev/weapons/${u}`,{signal: controller.signal})))
+        const jsons = await Promise.all(res.map(r => r.json()))
+
+        let index = 0
+        const data = jsons.map(e =>{
             
-            if (response.status >= 200 && response.status <= 299) {
-                console.log("seems good")
-                const data = await response.json()
+            let formattedName = weapons[index]
+            formattedName = formattedName.replace(/\s+/g, '-')
+            index++
 
-                //Checking if icon exists for the weapons if not skip em...
-                const ImageExists = await fetch(`https://api.genshin.dev/weapons/${weapons[index]}/icon`,{
-                    signal: controller.signal
-                  })
-
-                if(ImageExists.status === 404){
-                    console.log("Image doesnt exist")
-                    continue;
-                }
-
-                data.frameImage = `https://api.genshin.dev/weapons/${weapons[index]}/icon`
-                data.uniqueKey = index + 2
-                data.rarity = data.rarity
-                tempData.push(data)
-                setLoadingValue(prevState =>{
-                    return prevState + 1
-                })
+            return{
+                ...e,
+                frameImage : `https://api.genshin.dev/weapons/${formattedName}/icon`,
+                uniqueKey : index
             }
-            else if ( response.status === 404){
-                console.log("Error 404")
-                continue;
-            }
-
-               
-
-            
-        }
+        })
 
         setLoading(false)
-        setWeaponsDetails(tempData)
+        setWeaponsDetails(data)
 
-        sessionStorage.setItem("weaponDetails", JSON.stringify(tempData));
+        sessionStorage.setItem("weaponDetails", JSON.stringify(data));
         
     }
 
@@ -123,7 +98,7 @@ const GetWeapons = ({close}) => {
 
     return ( 
         <>
-            { Loading && <ProgressBar currValue={loadingValue} maxValue={loadingMaxValue}></ProgressBar> }
+            { Loading && <ProgressBar></ProgressBar> }
             {
                 weaponsDetails.map( weapon =>(
                     <div className="column is-1" key={weapon.uniqueKey} onClick={close}>
