@@ -8,7 +8,7 @@
 
 > A simple app that lets you download Simple Genshin Impact characters builds...for reference or sharing.
 
-### 🏠 [Homepage](https://emergency-food.herokuapp.com/)
+### 🏠 [Homepage](https://grimlock-kappa.vercel.app/)
 
 
 ## Project Status
